@@ -9,7 +9,9 @@ class ListsController < ApplicationController
     @list=List.new(list_params)
       # 3- データをデータベースに保存するためのsaveメソッド実行
       if @list.save
-        # 4- 詳細画面へリダイレクト
+        # 4-フラッシュメッセージを定義、表示
+        flash[:notice]="投稿が成功しました。"
+        # 5- 詳細画面へリダイレクト
         redirect_to list_path(@list.id)
       else
         render :new
